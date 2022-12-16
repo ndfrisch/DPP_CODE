@@ -9,3 +9,6 @@ def segreduce [n] 't (op: t -> t-> t) (ne: t) (arr: [n](t, bool)): []t =
     let indices = scan (+) (-1) bits in
     let retval = scatter (replicate (indices[n-1] + 1) ne) indices temp in
     retval
+
+def reduce_by_index 'a [m] [n] (dest : *[m]a) (f : a -> a -> a) (ne : a) (is : [n]i64) (as : [n]a) : *[m]a =
+    dest
