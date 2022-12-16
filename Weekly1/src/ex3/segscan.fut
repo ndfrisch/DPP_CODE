@@ -1,11 +1,4 @@
--- ==
--- entry: test_segscan
--- random input { [100]i32 [100]bool }
--- random input { [1000]i32 [1000]bool }
--- random input { [10000]i32 [10000]bool }
--- random input { [100000]i32 [100000]bool }
--- random input { [1000000]i32 [1000000]bool }
--- random input { [10000000]i32 [10000000]bool }
+
 
 def segscan [n] 't (op: t -> t -> t) (ne: t) (arr: [n](t, bool)): [n]t =
     let temp = scan (\(v1, f1) (v2, f2) -> if f2 then (v2, f2) else ((op v1 v2), f1 || f2)) (ne, false) arr in
@@ -13,15 +6,6 @@ def segscan [n] 't (op: t -> t -> t) (ne: t) (arr: [n](t, bool)): [n]t =
     retval
 
 entry test_segscan [n] (a: [n]i32) (b: [n]bool) = segscan (+) 0 (zip a b)
-
--- ==
--- entry: test_scan
--- random input { [100]i32 }
--- random input { [1000]i32 }
--- random input { [10000]i32 }
--- random input { [100000]i32 }
--- random input { [1000000]i32 }
--- random input { [10000000]i32 }
 
 entry test_scan = scan (+) 0i32
 
