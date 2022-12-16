@@ -2,12 +2,12 @@ def ilog2 (x: i64) = i64.i32 (63 - i64.clz x)
 
 -- ==
 -- entry: test_hillis_steele
--- random input { [100]i32 [100]i32 }
--- random input { [1000]i32 [1000]i32 }
--- random input { [10000]i32 [10000]i32 }
--- random input { [100000]i32 [100000]i32 }
--- random input { [1000000]i32 [1000000]i32 }
--- random input { [10000000]i32 [10000000]i32 }
+-- random input { [100]i32 }
+-- random input { [1000]i32 }
+-- random input { [10000]i32 }
+-- random input { [100000]i32 }
+-- random input { [1000000]i32 }
+-- random input { [10000000]i32 }
 
 def hillis_steele [n] (xs: [n]i32) : [n]i32 =
     let m = ilog2 n
@@ -18,12 +18,12 @@ entry test_hillis_steele = hillis_steele
 
 -- ==
 -- entry: test_work_efficient
--- random input { [100]i32 [100]i32 }
--- random input { [1000]i32 [1000]i32 }
--- random input { [10000]i32 [10000]i32 }
--- random input { [100000]i32 [100000]i32 }
--- random input { [1000000]i32 [1000000]i32 }
--- random input { [10000000]i32 [10000000]i32 }
+-- random input { [100]i32 }
+-- random input { [1000]i32 }
+-- random input { [10000]i32 }
+-- random input { [100000]i32 }
+-- random input { [1000000]i32 }
+-- random input { [10000000]i32 }
 
 def work_efficient [n] (xs: [n]i32) : [n]i32 =
     let m = ilog2 n
