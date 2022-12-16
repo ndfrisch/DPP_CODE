@@ -44,3 +44,14 @@ def work_efficient [n] (xs: [n]i32) : [n]i32 =
     in downswept
 
 entry test_work_efficient = work_efficient
+
+-- ==
+-- entry: test_scan
+-- random input { [100]i32 }
+-- random input { [1000]i32 }
+-- random input { [10000]i32 }
+-- random input { [100000]i32 }
+-- random input { [1000000]i32 }
+-- random input { [10000000]i32 }
+
+entry test_scan = scan (+)
