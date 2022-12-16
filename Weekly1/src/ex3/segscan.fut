@@ -14,6 +14,26 @@ def segscan [n] 't (op: t -> t -> t) (ne: t) (arr: [n](t, bool)): [n]t =
 
 entry test_segscan [n] (a: [n]i32) (b: [n]bool) = segscan (+) 0 (zip a b)
 
+-- ==
+-- entry: test_scan
+-- random input { [100]i32 }
+-- random input { [1000]i32 }
+-- random input { [10000]i32 }
+-- random input { [100000]i32 }
+-- random input { [1000000]i32 }
+-- random input { [10000000]i32 }
+
+entry test_scan = scan (+) 0i32
+
+-- ==
+-- entry: test_segreduce
+-- random input { [100]i32 [100]bool }
+-- random input { [1000]i32 [1000]bool }
+-- random input { [10000]i32 [10000]bool }
+-- random input { [100000]i32 [100000]bool }
+-- random input { [1000000]i32 [1000000]bool }
+-- random input { [10000000]i32 [10000000]bool }
+
 def segreduce [n] 't (op: t -> t-> t) (ne: t) (arr: [n](t, bool)): []t =
     let temp = segscan op ne arr in
     let bits = map (\(_, f) -> if f then 1 else 0) arr in
@@ -21,5 +41,15 @@ def segreduce [n] 't (op: t -> t-> t) (ne: t) (arr: [n](t, bool)): []t =
     let retval = scatter (replicate (indices[n-1] + 1) ne) indices temp in
     retval
 
-def reduce_by_index 'a [m] [n] (dest : *[m]a) (f : a -> a -> a) (ne : a) (is : [n]i64) (as : [n]a) : *[m]a =
-    dest
+entry test_segreduce [n] (a: [n]i32) (b: [n]bool) = segreduce (+) 0 (zip a b)
+
+-- ==
+-- entry: test_reduce
+-- random input { [100]i32 }
+-- random input { [1000]i32 }
+-- random input { [10000]i32 }
+-- random input { [100000]i32 }
+-- random input { [1000000]i32 }
+-- random input { [10000000]i32 }
+
+entry test_reduce = reduce (+) 0i32
