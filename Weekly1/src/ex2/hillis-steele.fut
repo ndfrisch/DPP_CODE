@@ -54,4 +54,4 @@ entry test_work_efficient = work_efficient
 -- random input { [1000000]i32 }
 -- random input { [10000000]i32 }
 
-entry test_scan = scan (+)
+entry test_scan = scan (+) 0i32
